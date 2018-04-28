@@ -16,28 +16,31 @@ pub enum BTree<T>
     }
 }
 
-enum KeyPtrGroup<T> {
+enum KeyPtrGroup<'a, T>
+    where T: 'a
+{
     NotLast {
-        left_ptr: Box<BTree<T>>,
-        key: T
+        left_ptr: &'a Box<BTree<T>>,
+        key: &'a T
     },
     Last {
-        left_ptr: Box<BTree<T>>,
-        key: T,
-        right_ptr: Box<BTree<T>>,
+        left_ptr: &'a Box<BTree<T>>,
+        key: &'a T,
+        right_ptr: &'a Box<BTree<T>>,
     }
 }
 
 /// This is an iterator that groups the the keys and pointers together.
-// TODO This probably needs to use references, because copying the ptrs, _will_ copy the owned values
-struct BTreeNodeIterator<T> {
+struct BTreeNodeIterator<'a, T>
+    where T: 'a
+{
     key_index: usize,
-    keys: [Option<T>; B_TREE_WIDTH -1],
-    ptrs: [Box<BTree<T>>; B_TREE_WIDTH]
+    keys: &'a [Option<T>; B_TREE_WIDTH -1],
+    ptrs: &'a [Box<BTree<T>>; B_TREE_WIDTH]
 }
 
-impl <T> BTreeNodeIterator<T> {
-    fn new(keys: [Option<T>; B_TREE_WIDTH -1], ptrs: [Box<BTree<T>>; B_TREE_WIDTH]) -> BTreeNodeIterator<T> {
+impl <'a, T> BTreeNodeIterator<'a, T> {
+    fn new(keys: &'a [Option<T>; B_TREE_WIDTH -1], ptrs: &'a [Box<BTree<T>>; B_TREE_WIDTH]) -> BTreeNodeIterator<'a, T> {
         BTreeNodeIterator {
             key_index: 0,
             keys,
@@ -46,23 +49,22 @@ impl <T> BTreeNodeIterator<T> {
     }
 }
 
-impl<T> Iterator for BTreeNodeIterator<T>
+impl<'a, T> Iterator for BTreeNodeIterator<'a, T>
     where T: Clone
 {
-    type Item = KeyPtrGroup<T>;
+    type Item = KeyPtrGroup<'a, T>;
     fn next(& mut self) -> Option<Self::Item> {
 
         if self.key_index < B_TREE_WIDTH {
             if let Some(ref key) =  self.keys[self.key_index] {
-                let left_ptr = self.ptrs[self.key_index].clone();
-                let key = key.clone();
+                let left_ptr = &self.ptrs[self.key_index];
                 self.key_index += 1;
 
                 // This is _after_ the key index has been incremented
                 if self.key_index < B_TREE_WIDTH {
                     if let None = self.keys[self.key_index] {
                         // If the next key is invalid, return the Last variant
-                        let right_ptr = self.ptrs[self.key_index].clone();
+                        let right_ptr = &self.ptrs[self.key_index];
                         return Some(KeyPtrGroup::Last {
                             left_ptr,
                             key,
@@ -75,7 +77,7 @@ impl<T> Iterator for BTreeNodeIterator<T>
                         });
                     }
                 } else {
-                    let right_ptr = self.ptrs[self.key_index].clone();
+                    let right_ptr = &self.ptrs[self.key_index];
                     return Some(KeyPtrGroup::Last {
                         left_ptr,
                         key,
@@ -118,17 +120,17 @@ impl <T> BTree<T>
             }
             BTree::Node {ref children_keys, ref children_ptrs} => {
                 // search to see if the search key is contained within this la
-                let mut node_iterator = BTreeNodeIterator::new(children_keys.clone(), children_ptrs.clone());
+                let mut node_iterator = BTreeNodeIterator::new(children_keys, children_ptrs);
                 while let Some(group) = node_iterator.next() {
                     match group {
                         KeyPtrGroup::NotLast {left_ptr, key} => {
-                            if *search_key < key {
+                            if search_key < key {
                                 return (&*left_ptr).find(search_key)// keep searching in the LHS
                             }
                             // If the condition is not met, move onto the next group
                         }
                         KeyPtrGroup::Last {left_ptr, key, right_ptr} => {
-                            if *search_key < key {
+                            if search_key < key {
                                 return (&*left_ptr).find(search_key) // keep searching in the LHS
                             } else {
                                 return (&*right_ptr).find(search_key) // Remember, that the RHS pointer may point to a None variant, causing this to return None
