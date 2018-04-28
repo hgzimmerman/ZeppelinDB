@@ -77,6 +77,7 @@ impl<'a, T> Iterator for BTreeNodeIterator<'a, T>
                         });
                     }
                 } else {
+                    // If the next key index is equal to (it better not be greater than), return the Last variant.
                     let right_ptr = &self.ptrs[self.key_index];
                     return Some(KeyPtrGroup::Last {
                         left_ptr,
@@ -112,7 +113,7 @@ impl <T> BTree<T>
         BTree::None
     }
 
-    /// Finds the page in the database, using an index.
+    /// Finds the index of the page in the database's vector of pages, using a key (which is the _other_ kind of index).
     fn find(&self, search_key: &T) -> Option<usize> {
         match *self {
             BTree::None => {
@@ -148,7 +149,7 @@ impl <T> BTree<T>
 
 
     /// Inserts a page into the BTree
-    fn insert(&mut self, page: Page, schema: &Schema)
+    fn insert(&mut self, key: T, value: T)
         where T: Ord + PartialOrd
     {
         match self {
@@ -159,11 +160,11 @@ impl <T> BTree<T>
                     children_keys,
                     children_ptrs
                 };
-                new_b_tree.insert(page, schema)
+                new_b_tree.insert(key, value)
             },
             BTree::Node {ref mut children_keys, ref mut children_ptrs} => {
 
-                let page_index: &T = page.get_first_index(schema);
+//                let page_index: &T = page.get_first_index(schema);
 //
 //                let mut iter = children.iter_mut().peekable();
 //
