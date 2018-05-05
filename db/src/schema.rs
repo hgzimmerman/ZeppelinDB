@@ -1,11 +1,11 @@
-use table_newest::Value;
-use table_newest::Tuple;
+use table::Value;
+use table::Tuple;
 use row::BoxedRow;
 pub type Name = String;
 use std::marker::PhantomData;
 use std::slice::Iter;
 
-#[derive(Clone)]
+#[derive( Clone, Serialize, Deserialize)]
 pub struct ColumnMetadata {
     pub(crate) name: Name,
     pub(crate) db_type: DbType,
@@ -36,20 +36,20 @@ impl ColumnMetadata {
 }
 
 // TODO, would it make sense to embed these inside of db_type??
-#[derive(Clone)]
+#[derive( Clone, Serialize, Deserialize)]
 pub enum Constraint {
     NotNull,
     Unique,
     Serial,
 }
 
-#[derive(Clone)]
+#[derive( Clone, Serialize, Deserialize)]
 pub enum Attribute {
     PrimaryKey,
     ForeignKey,
 }
 
-#[derive(Clone)]
+#[derive( Clone, Serialize, Deserialize)]
 pub struct Schema {
     pub(crate) columns: Box<[ColumnMetadata]>
 }
@@ -162,7 +162,7 @@ impl Schema {
 }
 
 /// The types that are contained within the database.
-#[derive(Clone, PartialEq, Debug)]
+#[derive(Clone, PartialEq, Debug, Serialize, Deserialize)]
 pub enum DbType {
     Integer,
     BigInt,

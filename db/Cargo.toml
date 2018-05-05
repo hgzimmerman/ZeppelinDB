@@ -4,3 +4,7 @@ version = "0.1.0"
 authors = ["Henry Zimmerman <zimhen7@gmail.com>"]
 
 [dependencies]
+
+serde = "1"
+serde_derive = "1"
+serde_json = "*"
