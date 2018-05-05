@@ -1,4 +1,5 @@
-/db/target
+target/
+db/target/
 **/*.rs.bk
 Cargo.lock
 .idea

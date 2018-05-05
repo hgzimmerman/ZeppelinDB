@@ -4,9 +4,11 @@ extern crate test;
 //mod table;
 mod schema;
 //mod btree;
+mod row;
 
 //mod table;
-mod table_lazy;
+//mod table_lazy;
+mod table_newest;
 
 use std::mem::transmute;
 use std::slice::Iter;
