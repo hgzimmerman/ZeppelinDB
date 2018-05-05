@@ -2,6 +2,8 @@
 extern crate yew;
 use yew::prelude::*;
 
+extern crate failure;
+
 mod signup_comp;
 use signup_comp::SignUpComponent;
 

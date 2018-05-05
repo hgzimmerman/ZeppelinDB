@@ -1,5 +1,13 @@
 use yew::prelude::*;
 
+use yew::services::websocket::{ WebSocketService, WebSocketStatus, };
+use yew::services::fetch::Response;
+use yew::format::Json;
+
+use failure::Error;
+// extern crate zeppelin_db;
+// use zeppelin_db::Table;
+
 
 type Context = ();
 
@@ -13,6 +21,8 @@ pub enum Msg {
     UserUpdate(String),
     PasswordUpdate(String),
     Submit,
+    FetchReady(Result<String, Error>),
+    Ignore,
     NoOp,
 }
 
@@ -28,7 +38,7 @@ impl Component<Context> for SignUpComponent {
         }
     }
 
-    fn update(&mut self, msg: Self::Msg, _: &mut Env<Context, Self>) -> ShouldRender {
+    fn update(&mut self, msg: Self::Msg, env: &mut Env<Context, Self>) -> ShouldRender {
         match msg {
             Msg::UserUpdate(text) => {
                 self.username = text;
@@ -42,6 +52,7 @@ impl Component<Context> for SignUpComponent {
                 self.username = "".to_string();
                 self.password = "".to_string();
                 println!("Submit pressed");
+
                 true
             }
             _ => {
