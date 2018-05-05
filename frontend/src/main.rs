@@ -5,6 +5,9 @@ use yew::prelude::*;
 mod signup_comp;
 use signup_comp::SignUpComponent;
 
+mod transfer_comp;
+use transfer_comp::TransferComponent;
+
 
 type Context = ();
 
@@ -90,6 +93,7 @@ impl Renderable<Context, Model> for Model {
             <div>
                 <SignUpComponent: />
 
+                <TransferComponent: />
 
             </div>
         }
