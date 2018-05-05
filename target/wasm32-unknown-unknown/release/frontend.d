@@ -1,0 +1,1 @@
+C:\Users\William\Documents\rustProjects\BAdhacks\ZeppelinDB\target\wasm32-unknown-unknown\release\frontend.wasm: C:\Users\William\Documents\rustProjects\BAdhacks\ZeppelinDB\frontend\src\main.rs C:\Users\William\Documents\rustProjects\BAdhacks\ZeppelinDB\frontend\src\signup_comp.rs

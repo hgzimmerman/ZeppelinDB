@@ -1,6 +1,7 @@
 [package]
-name = "backend"
+name = "frontend"
 version = "0.1.0"
 authors = ["Henry Zimmerman <zimhen7@gmail.com>, William Stogin <wstogin@u.northwestern.edu>"]
 
 [dependencies]
+yew = { git = "https://github.com/hgzimmerman/yew", rev = "ad750e481746b1eaa8853b1575580a856c277bf2" }

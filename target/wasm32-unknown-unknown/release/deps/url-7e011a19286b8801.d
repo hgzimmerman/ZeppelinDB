@@ -1,0 +1,13 @@
+C:\Users\William\Documents\rustProjects\BAdhacks\ZeppelinDB\target\wasm32-unknown-unknown\release\deps\liburl-7e011a19286b8801.rlib: C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\lib.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\encoding.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\host.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\origin.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\path_segments.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\parser.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\slicing.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\form_urlencoded.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\quirks.rs
+
+C:\Users\William\Documents\rustProjects\BAdhacks\ZeppelinDB\target\wasm32-unknown-unknown\release\deps\url-7e011a19286b8801.d: C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\lib.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\encoding.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\host.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\origin.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\path_segments.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\parser.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\slicing.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\form_urlencoded.rs C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\quirks.rs
+
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\lib.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\encoding.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\host.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\origin.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\path_segments.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\parser.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\slicing.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\form_urlencoded.rs:
+C:\Users\William\.cargo\registry\src\github.com-1ecc6299db9ec823\url-1.7.0\src\quirks.rs:
