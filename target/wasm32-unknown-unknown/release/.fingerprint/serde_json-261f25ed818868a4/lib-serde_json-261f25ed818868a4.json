@@ -1,1 +1,0 @@
-{"rustc":15424346658487105028,"features":"[\"default\"]","target":1322984723252129289,"profile":4526152405984878336,"path":708695538412710909,"deps":[["dtoa v0.4.2","dtoa",16249454704862830606],["itoa v0.4.1","itoa",17493571992784381038],["serde v1.0.45","serde",7151661834958508298]],"local":[{"Precalculated":"1.0.17"}],"rustflags":["-C","debuginfo=2"],"edition":"Edition2015"}
